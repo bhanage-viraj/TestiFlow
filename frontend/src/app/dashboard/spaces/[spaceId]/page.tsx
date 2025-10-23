@@ -303,6 +303,13 @@ export default function TestimonialWidget() {
                 <ExternalLink className="h-4 w-4 mr-2" />
                 View Public Page
               </Button>
+              <Button 
+                variant="outline" 
+                onClick={() => router.push(`/dashboard/spaces/${spaceId}/wall-of-love`)}
+              >
+                <Heart className="h-4 w-4 mr-2" />
+                Wall of Love
+              </Button>
               <Button variant="outline" onClick={() => setEditing(true)}>
                 <Edit3 className="h-4 w-4 mr-2" />
                 Edit

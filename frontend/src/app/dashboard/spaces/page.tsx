@@ -18,7 +18,8 @@ import {
   Users,
   Calendar,
   Copy,
-  Check
+  Check,
+  Heart
 } from 'lucide-react'
 import toast from 'react-hot-toast'
 
@@ -268,6 +269,13 @@ export default function SpacesPage() {
                       >
                         <LayoutGrid className="h-4 w-4 mr-2" />
                         Manage
+                      </Button>
+                      <Button 
+                        variant="outline"
+                        size="sm"
+                        onClick={() => router.push(`/dashboard/spaces/${space.id}/wall-of-love`)}
+                      >
+                        <Heart className="h-4 w-4" />
                       </Button>
                       <Button 
                         variant="outline"
