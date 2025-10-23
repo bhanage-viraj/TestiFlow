@@ -23,16 +23,13 @@ public class ReviewController {
     @Autowired
     private ReviewService reviewService;
 
-    // PUBLIC ENDPOINT for review submission (no change needed here)
+    // PUBLIC ENDPOINT for review submission
     @PostMapping("/{slug}")
     public ResponseEntity<Void> submitReview(@PathVariable String slug, @Valid @RequestBody ReviewRequest reviewRequest) {
-        // Service returns Space for redirect URL, which is correct
+        // Service returns Space for redirect URL
         Space space = reviewService.submitReview(slug, reviewRequest);
-        // Redirect to the space's configured redirect URL
-        return ResponseEntity.status(HttpStatus.FOUND)
-                .location(URI.create(space.getRedirectUrl()))
-                .build();
-        // Removed try-catch as ResourceNotFoundException is handled globally
+        // For API calls, return 201 Created instead of redirect to avoid CORS issues
+        return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
     // UPDATE: ResponseEntity<List<Review>> to ResponseEntity<List<ReviewDto>>
