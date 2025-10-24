@@ -305,15 +305,7 @@ docker-compose up --build
 
 ---
 
-## 🐛 Common Issues
-
-**Backend won't start**: Check Java version and MongoDB connection
-**Frontend errors**: Clear node_modules and reinstall
-**CORS issues**: Verify backend allows frontend URL
-
----
-
-## 📄 License
+##  License
 
 MIT License - see [LICENSE](LICENSE) file for details.
 
