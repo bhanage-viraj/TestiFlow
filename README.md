@@ -28,7 +28,15 @@
 
 ## 📖 About
 
-TestiFlow is a modern, full-stack platform designed to effortlessly collect customer testimonials and display them beautifully on your website. It provides a seamless experience for businesses to gather feedback and build social proof that converts visitors into customers.
+TestiFlow is a modern, full-stack platform that transforms how businesses collect and showcase customer testimonials. Say goodbye to scattered Google Forms and manual testimonial management. With TestiFlow, you get a streamlined solution that automatically collects, curates, and displays beautiful testimonials that convert visitors into customers.
+
+### Why TestiFlow?
+
+- **Save Time**: Automate your testimonial collection process
+- **Increase Conversions**: Beautiful displays build trust and social proof  
+- **Stay Organized**: Manage all testimonials in one central dashboard
+- **Easy Integration**: Embed anywhere with simple code snippets
+- **Professional Appearance**: Multiple templates that match your brand
 
 ## ✨ Features
 
@@ -71,15 +79,52 @@ Beautiful, modern UI that works perfectly on desktop, tablet, and mobile devices
 
 ---
 
-## 🚀 Demo
+## 🚀 How to Use TestiFlow
 
-> **Note**: Add screenshots or GIF demos here showing the key features in action
+### Step 1: Create Your Space
+1. Sign up and log into your TestiFlow dashboard
+2. Click "Create New Space" 
+3. Name your space (e.g., "Product Reviews", "Client Testimonials")
+4. Set a custom redirect URL (optional)
 
-### Key Workflows:
-1. **Create a Space** → Get a public link
-2. **Share the Link** → Customers submit testimonials
-3. **Curate Reviews** → Like the best ones
-4. **Embed & Display** → Add to your website
+### Step 2: Collect Testimonials
+1. Copy your unique public link from the space dashboard
+2. Share this link with your customers via:
+   - Email campaigns
+   - Website buttons/forms
+   - Social media
+   - QR codes
+3. Customers click the link and submit their testimonials directly
+
+### Step 3: Curate Your Best Reviews
+1. View all submissions in your dashboard
+2. Click the ❤️ (heart) icon on testimonials you want to showcase
+3. Liked testimonials become available for embedding
+4. Delete spam or inappropriate submissions
+
+### Step 4: Display on Your Website
+1. Go to the "Wall of Love" section
+2. Choose from multiple beautiful templates:
+   - **Grid Layout**: Clean card-based design
+   - **Carousel**: Rotating testimonials
+   - **List View**: Simple vertical layout
+3. Select HTML, React, or Next.js code format
+4. Copy the generated code and paste it into your website
+
+### Step 5: Embed Individual Testimonials  
+1. Use the embed generator for specific testimonials
+2. Perfect for landing pages, product pages, or marketing materials
+3. Customize the appearance to match your brand
+
+---
+
+## 💡 Pro Tips
+
+- **Email Integration**: Add your testimonial link to email signatures
+- **Social Proof**: Display testimonials on high-traffic pages
+- **Regular Updates**: Fresh testimonials improve credibility
+- **Mobile Optimization**: All templates are fully responsive
+- **SEO Benefits**: Testimonials add valuable user-generated content
 
 ---
 
@@ -170,116 +215,41 @@ TestiFlow/
 
 ---
 
-## 🚀 Getting Started
+## 🚀 Quick Setup
 
 ### 📋 Prerequisites
+- **Java JDK** 21+
+- **Node.js** 18.17+
+- **MongoDB** (Atlas recommended)
 
-Before you begin, ensure you have the following installed:
+### ⚡ Installation
 
-| Tool | Version | Purpose |
-|------|---------|---------|
-| **Java JDK** | 21+ | Backend development |
-| **Node.js** | 18.17+ | Frontend development |
-| **npm/yarn** | Latest | Package management |
-| **Git** | Latest | Version control |
-| **MongoDB** | 5.0+ | Database (local or Atlas) |
-
-### ⚡ Quick Start
-
-1. **Clone the repository**
+1. **Clone and setup**
    ```bash
    git clone https://github.com/your-username/TestiFlow.git
    cd TestiFlow
    ```
 
-### 🔧 Backend Setup
-
-1. **Navigate to backend directory**
+2. **Backend setup**
    ```bash
    cd backend
-   ```
-
-2. **Configure environment variables**
-   
-   Create `src/main/resources/application.properties`:
-   ```properties
-   # Database Configuration
-   spring.data.mongodb.uri=mongodb+srv://username:password@cluster.mongodb.net/testiflow
-   
-   # JWT Configuration  
-   jwt.secret=your-super-secret-jwt-key-at-least-256-bits-long
-   jwt.expiration=86400000
-   
-   # Server Configuration
-   server.port=8080
-   
-   # CORS Configuration (for development)
-   app.cors.allowed-origins=http://localhost:3000
-   ```
-
-   > 💡 **Tip**: For production, use environment variables instead of hardcoding values.
-
-3. **Build and run the backend**
-   ```bash
-   # Build the application
-   ./mvnw clean package -DskipTests
-   
-   # Run the application
+   # Configure src/main/resources/application.properties
    ./mvnw spring-boot:run
+   # Runs on http://localhost:8080
    ```
 
-   ✅ Backend should be running at `http://localhost:8080`
-
-### 🎨 Frontend Setup
-
-1. **Open a new terminal and navigate to frontend**
+3. **Frontend setup**
    ```bash
    cd frontend
-   ```
-
-2. **Install dependencies**
-   ```bash
    npm install
-   # or
-   yarn install
-   ```
-
-3. **Configure environment variables**
-   
-   Create `.env.local`:
-   ```env
-   NEXT_PUBLIC_API_URL=http://localhost:8080/api
-   ```
-
-4. **Run the development server**
-   ```bash
+   # Create .env.local with NEXT_PUBLIC_API_URL=http://localhost:8080/api
    npm run dev
-   # or
-   yarn dev
+   # Runs on http://localhost:3000
    ```
 
-   ✅ Frontend should be running at `http://localhost:3000`
-
-### 🎉 You're Ready!
-
-Open [http://localhost:3000](http://localhost:3000) in your browser to see TestiFlow in action!
-
----
-
-## 🗄️ Database Setup
-
-### Option 1: MongoDB Atlas (Recommended)
-
-1. Create a free account at [MongoDB Atlas](https://www.mongodb.com/atlas)
-2. Create a new cluster
-3. Get your connection string
-4. Replace the `spring.data.mongodb.uri` in your configuration
-
-### Option 2: Local MongoDB
-
-1. Install MongoDB locally
-2. Start MongoDB service
-3. Use connection string: `mongodb://localhost:27017/testiflow`
+### 🗄️ Database Setup
+- **MongoDB Atlas**: Create free cluster at [mongodb.com/atlas](https://mongodb.com/atlas)
+- **Local MongoDB**: Use `mongodb://localhost:27017/testiflow`
 
 ---
 
@@ -316,185 +286,48 @@ GET    /api/embed/{spaceId}/reviews    # Public embed endpoint
 
 ## 🚀 Deployment
 
-### Backend Deployment (Render/Railway)
+### Quick Deployment Options
 
-1. **Prepare for deployment**
-   ```bash
-   # Ensure Dockerfile exists in backend/
-   # Set environment variables in your platform
-   ```
+**Frontend (Vercel)**
+- Connect GitHub repo to Vercel
+- Set `NEXT_PUBLIC_API_URL` environment variable
+- Auto-deploys on push to main
 
-2. **Environment Variables for Production**
-   ```env
-   SPRING_DATA_MONGODB_URI=your-mongodb-atlas-connection
-   JWT_SECRET=your-production-jwt-secret
-   SPRING_PROFILES_ACTIVE=prod
-   ```
+**Backend (Render/Railway)**  
+- Connect GitHub repo
+- Set MongoDB connection string
+- Configure JWT secret
 
-3. **Deploy to Render**
-   - Connect your GitHub repository
-   - Set the build command: `cd backend && ./mvnw clean package -DskipTests`
-   - Set the start command: `cd backend && java -jar target/*.jar`
-
-### Frontend Deployment (Vercel)
-
-1. **Connect to Vercel**
-   ```bash
-   npm install -g vercel
-   cd frontend
-   vercel
-   ```
-
-2. **Environment Variables**
-   ```env
-   NEXT_PUBLIC_API_URL=https://your-backend-url.com/api
-   ```
-
-3. **Auto-deploy** is configured for the `main` branch
-
-### Docker Deployment
-
+### Docker
 ```bash
-# Build and run with Docker Compose
 docker-compose up --build
-
-# Or build individually
-cd backend && docker build -t testiflow-backend .
-cd frontend && docker build -t testiflow-frontend .
 ```
 
 ---
 
-## 🛠️ Development
+## 🐛 Common Issues
 
-### Code Style & Standards
-
-- **Backend**: Follow Java/Spring Boot conventions
-- **Frontend**: ESLint + Prettier configuration included
-- **Git**: Conventional commits recommended
-
-### Running Tests
-
-```bash
-# Backend tests
-cd backend
-./mvnw test
-
-# Frontend tests  
-cd frontend
-npm run test
-```
-
-### Development Scripts
-
-```bash
-# Frontend development
-npm run dev          # Start development server
-npm run build        # Build for production  
-npm run lint         # Run ESLint
-npm run type-check   # TypeScript type checking
-
-# Backend development
-./mvnw spring-boot:run              # Run with hot reload
-./mvnw clean package -DskipTests    # Build without tests
-./mvnw test                         # Run tests
-```
-
----
-
-## 🐛 Troubleshooting
-
-### Common Issues
-
-**❌ Backend won't start**
-- Check Java version: `java --version` (should be 21+)
-- Verify MongoDB connection string
-- Check if port 8080 is available
-
-**❌ Frontend build errors**
-- Clear node_modules: `rm -rf node_modules && npm install`
-- Check Node.js version: `node --version` (should be 18.17+)
-- Verify environment variables in `.env.local`
-
-**❌ Database connection issues**
-- Whitelist your IP in MongoDB Atlas
-- Check network connectivity
-- Verify credentials in connection string
-
-**❌ CORS errors**
-- Ensure frontend URL is in backend CORS configuration
-- Check if both services are running on expected ports
-
-### Getting Help
-
-1. Check the [Issues](https://github.com/your-username/TestiFlow/issues) page
-2. Search existing discussions
-3. Create a new issue with:
-   - Error messages
-   - Steps to reproduce
-   - Your environment details
-
----
-
-## 🤝 Contributing
-
-We welcome contributions! Here's how to get started:
-
-### Development Setup
-
-1. Fork the repository
-2. Create a feature branch: `git checkout -b feature/amazing-feature`
-3. Make your changes
-4. Add tests if applicable
-5. Commit with conventional commits: `git commit -m "feat: add amazing feature"`
-6. Push to your branch: `git push origin feature/amazing-feature`
-7. Open a Pull Request
-
-### Contribution Guidelines
-
-- **Code Quality**: Follow existing patterns and conventions
-- **Testing**: Add tests for new features
-- **Documentation**: Update README and code comments
-- **Commits**: Use conventional commit messages
-
-### Areas for Contribution
-
-- 🐛 Bug fixes
-- ✨ New features
-- 📚 Documentation improvements
-- 🎨 UI/UX enhancements
-- ⚡ Performance optimizations
-- 🧪 Test coverage improvements
+**Backend won't start**: Check Java version and MongoDB connection
+**Frontend errors**: Clear node_modules and reinstall
+**CORS issues**: Verify backend allows frontend URL
 
 ---
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
----
-
-## 🙋‍♂️ Support
-
-If you like this project, please consider:
-
-- ⭐ Starring the repository
-- 🐛 Reporting bugs
-- 💡 Suggesting features
-- 🤝 Contributing code
+MIT License - see [LICENSE](LICENSE) file for details.
 
 ---
 
 ## 📬 Contact
 
-- **GitHub**: [@your-username](https://github.com/your-username)
+- **GitHub**: [@your-username](https://github.com/your-username)  
 - **Email**: your.email@example.com
-- **Twitter**: [@your-handle](https://twitter.com/your-handle)
 
 ---
 
 <div align="center">
-  <strong>Made with ❤️ for the developer community</strong>
+  <strong>Made with ❤️ for converting testimonials into customers</strong>
   <br>
-  <sub>Built with Java, Spring Boot, Next.js, and lots of ☕</sub>
+  <sub>Built with Java Spring Boot & Next.js</sub>
 </div>
