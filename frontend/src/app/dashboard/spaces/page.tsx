@@ -22,6 +22,7 @@ import {
   Heart
 } from 'lucide-react'
 import toast from 'react-hot-toast'
+import SpacesSkeleton from '@/components/SpacesSkeleton'
 
 interface Space {
   id: string
@@ -213,12 +214,7 @@ export default function SpacesPage() {
       )}
 
       {/* Loading State */}
-      {loading && (
-        <div className="flex items-center justify-center py-12">
-          <Loader2 className="h-8 w-8 animate-spin text-blue-600" />
-          <span className="ml-2 text-gray-600">Loading spaces...</span>
-        </div>
-      )}
+      {loading && <SpacesSkeleton />}
 
       {/* Spaces Grid */}
       {!loading && (

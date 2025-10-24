@@ -1,10 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   env: {
-    NEXT_PUBLIC_API_URL: process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8080/api',
+    NEXT_PUBLIC_API_URL: process.env.NEXT_PUBLIC_API_URL || 'https://testiflow-j6us.onrender.com/api',
   },
   images: {
-    domains: ['localhost'],
+    domains: ['localhost', 'testiflow-j6us.onrender.com'],
   },
   async rewrites() {
     return [

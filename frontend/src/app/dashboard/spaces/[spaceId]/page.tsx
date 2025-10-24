@@ -208,8 +208,8 @@ export default function SpaceManagementPage() {
     )
   }
 
-  const publicUrl = `${typeof window !== 'undefined' ? window.location.origin : 'http://localhost:3000'}/t/${space.slug}`
-  const embedUrl = `${typeof window !== 'undefined' ? window.location.origin : 'http://localhost:3000'}/embed/${space.id}`
+  const publicUrl = `${typeof window !== 'undefined' ? window.location.origin : 'https://testiflow.com'}/t/${space.slug}`
+  const embedUrl = `${typeof window !== 'undefined' ? window.location.origin : 'https://testiflow.com'}/embed/${space.id}`
   
   const htmlEmbedCode = `<div id="testiflow-widget-${space.slug}"></div>
 <script>

@@ -8,16 +8,12 @@ import {
   LayoutGrid, 
   LogOut, 
   User, 
-  Settings,
-  Sparkles,
-  BarChart3
+  Sparkles
 } from 'lucide-react'
 
 const navigation = [
   { name: 'Dashboard', href: '/dashboard', icon: LayoutGrid },
   { name: 'Spaces', href: '/dashboard/spaces', icon: LayoutGrid },
-  { name: 'Analytics', href: '/dashboard/analytics', icon: BarChart3 },
-  { name: 'Settings', href: '/dashboard/settings', icon: Settings },
 ]
 
 export default function DashboardSidebar() {

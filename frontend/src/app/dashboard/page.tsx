@@ -21,6 +21,7 @@ import {
   Loader2
 } from 'lucide-react'
 import toast from 'react-hot-toast'
+import DashboardSkeleton from '@/components/DashboardSkeleton'
 
 interface Space {
   id: string
@@ -89,11 +90,11 @@ export default function DashboardPage() {
         }
       }
       
-      // Sort reviews by date (most recent first) and take last 5
+      // Sort reviews by date (most recent first) and take last 3
       const sortedReviews = allReviews.sort((a, b) => 
         new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
       )
-      setRecentReviews(sortedReviews.slice(0, 5))
+      setRecentReviews(sortedReviews.slice(0, 3))
       
       // Calculate stats
       const now = new Date()
@@ -164,11 +165,7 @@ export default function DashboardPage() {
   ]
 
   if (loading) {
-    return (
-      <div className="flex items-center justify-center min-h-[400px]">
-        <Loader2 className="h-8 w-8 animate-spin text-blue-600" />
-      </div>
-    )
+    return <DashboardSkeleton />
   }
 
   return (
@@ -195,7 +192,7 @@ export default function DashboardPage() {
                 <Button 
                   onClick={loadDashboardData}
                   variant="outline"
-                  className="border-white text-white hover:bg-white hover:text-blue-600"
+                  className="border-white text-white hover:bg-white hover:text-blue-600 bg-transparent"
                 >
                   <Activity className="w-4 h-4 mr-2" />
                   Refresh Data

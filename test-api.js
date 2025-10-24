@@ -3,7 +3,7 @@
 import fetch from 'node-fetch';
 
 const testApiConnection = async () => {
-  const baseUrl = 'http://localhost:8080/api';
+  const baseUrl = 'https://testiflow-j6us.onrender.com/api';
   
   console.log('Testing API connection...');
   console.log('Base URL:', baseUrl);

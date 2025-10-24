@@ -1,4 +1,4 @@
-# Use an official OpenJDK runtime as a parent image
+go o# Use an official OpenJDK runtime as a parent image
 # Make sure the Java version (e.g., 21) matches your project's requirement
 FROM eclipse-temurin:21-jdk-jammy
 

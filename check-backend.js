@@ -4,7 +4,7 @@ const http = require('http');
 
 const checkBackend = async () => {
   return new Promise((resolve, reject) => {
-    const req = http.get('http://localhost:8080/api/auth/me', (res) => {
+    const req = http.get('https://testiflow-j6us.onrender.com/api/auth/me', (res) => {
       if (res.statusCode === 401) {
         // 401 is expected for unauthenticated requests
         console.log('✅ Backend is running and accessible');

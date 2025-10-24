@@ -1,0 +1,12 @@
+backend/
+node_modules/
+target/
+*.jar
+*.class
+.git/
+.gitignore
+README.md
+FRONTEND_README.md
+check-backend.js
+test-api.js
+test-frontend.md
