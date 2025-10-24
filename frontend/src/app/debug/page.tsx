@@ -19,7 +19,7 @@ export default function DebugPage() {
       const response = await apiClient.login({ email, password })
       setResult({ type: 'login', data: response })
     } catch (error) {
-      setResult({ type: 'login', error: error.message })
+      setResult({ type: 'login', error: error instanceof Error ? error.message : 'Unknown error' })
     } finally {
       setLoading(false)
     }
@@ -31,7 +31,7 @@ export default function DebugPage() {
       const response = await apiClient.getCurrentUser()
       setResult({ type: 'getUser', data: response })
     } catch (error) {
-      setResult({ type: 'getUser', error: error.message })
+      setResult({ type: 'getUser', error: error instanceof Error ? error.message : 'Unknown error' })
     } finally {
       setLoading(false)
     }
@@ -43,7 +43,7 @@ export default function DebugPage() {
       const response = await apiClient.getSpaces()
       setResult({ type: 'getSpaces', data: response })
     } catch (error) {
-      setResult({ type: 'getSpaces', error: error.message })
+      setResult({ type: 'getSpaces', error: error instanceof Error ? error.message : 'Unknown error' })
     } finally {
       setLoading(false)
     }
@@ -58,7 +58,7 @@ export default function DebugPage() {
       })
       setResult({ type: 'createSpace', data: response })
     } catch (error) {
-      setResult({ type: 'createSpace', error: error.message })
+      setResult({ type: 'createSpace', error: error instanceof Error ? error.message : 'Unknown error' })
     } finally {
       setLoading(false)
     }
