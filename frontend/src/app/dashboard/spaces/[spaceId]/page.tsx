@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { useParams, useRouter } from 'next/navigation'
 import { apiClient, ApiError } from '@/lib/api'
 import { Button } from '@/components/ui/button'
@@ -58,13 +58,7 @@ export default function SpaceManagementPage() {
   const [saving, setSaving] = useState(false)
   const [copiedCode, setCopiedCode] = useState<string | null>(null)
 
-  useEffect(() => {
-    if (spaceId) {
-      loadSpaceData()
-    }
-  }, [spaceId])
-
-  const loadSpaceData = async () => {
+  const loadSpaceData = useCallback(async () => {
     try {
       setLoading(true)
       const [spaceData, reviewsData] = await Promise.all([
@@ -87,7 +81,13 @@ export default function SpaceManagementPage() {
     } finally {
       setLoading(false)
     }
-  }
+  }, [spaceId])
+
+  useEffect(() => {
+    if (spaceId) {
+      loadSpaceData()
+    }
+  }, [spaceId, loadSpaceData])
 
   const handleSave = async () => {
     if (!space) return
@@ -199,7 +199,7 @@ export default function SpaceManagementPage() {
     return (
       <div className="text-center py-12">
         <h2 className="text-xl font-semibold text-gray-900 mb-2">Space not found</h2>
-        <p className="text-gray-600 mb-4">The space you're looking for doesn't exist.</p>
+        <p className="text-gray-600 mb-4">The space you&apos;re looking for doesn&apos;t exist.</p>
         <Button onClick={() => router.push('/dashboard/spaces')}>
           <ArrowLeft className="h-4 w-4 mr-2" />
           Back to Spaces
@@ -440,7 +440,7 @@ export default function TestimonialWidget() {
             <h4 className="font-semibold text-blue-900 mb-2">How to use:</h4>
             <ol className="text-sm text-blue-800 space-y-1">
               <li>1. Copy the embed code above</li>
-              <li>2. Paste it into your website's HTML or React component</li>
+              <li>2. Paste it into your website&apos;s HTML or React component</li>
               <li>3. The testimonials will automatically load and display</li>
               <li>4. Users can submit new testimonials through the widget</li>
             </ol>

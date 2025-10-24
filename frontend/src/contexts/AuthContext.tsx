@@ -55,6 +55,14 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     initializeAuth()
   }, [])
 
+  const logout = useCallback(() => {
+    localStorage.removeItem('authToken')
+    setToken(null)
+    setUser(null)
+    toast.success('Logged out successfully')
+    router.push('/auth/login')
+  }, [router])
+
   const refreshUser = useCallback(async () => {
     if (!token) return
 
@@ -68,7 +76,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         logout()
       }
     }
-  }, [token])
+  }, [token, logout])
 
   const login = useCallback(async (email: string, password: string) => {
     try {
@@ -123,14 +131,6 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     } finally {
       setIsLoading(false)
     }
-  }, [router])
-
-  const logout = useCallback(() => {
-    localStorage.removeItem('authToken')
-    setToken(null)
-    setUser(null)
-    toast.success('Logged out successfully')
-    router.push('/auth/login')
   }, [router])
 
   const value: AuthContextType = {

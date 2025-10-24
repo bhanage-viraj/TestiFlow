@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { useParams } from 'next/navigation'
 import { apiClient, ApiError } from '@/lib/api'
 import { Button } from '@/components/ui/button'
@@ -96,11 +96,7 @@ export default function WallOfLovePage() {
   const [selectedFramework, setSelectedFramework] = useState<'html' | 'react' | 'nextjs'>('html')
   const [copiedCode, setCopiedCode] = useState(false)
 
-  useEffect(() => {
-    loadSpaceAndReviews()
-  }, [spaceId])
-
-  const loadSpaceAndReviews = async () => {
+  const loadSpaceAndReviews = useCallback(async () => {
     try {
       setLoading(true)
       const [spaceData, reviewsData] = await Promise.all([
@@ -121,7 +117,11 @@ export default function WallOfLovePage() {
     } finally {
       setLoading(false)
     }
-  }
+  }, [spaceId])
+
+  useEffect(() => {
+    loadSpaceAndReviews()
+  }, [spaceId, loadSpaceAndReviews])
 
   const generateCode = () => {
     const likedReviews = reviews.filter(review => review.liked)
@@ -383,7 +383,7 @@ export default TestimonialsWall;`
             WebkitLineClamp: size === 'small' ? 1 : 2,
             WebkitBoxOrient: 'vertical',
           }}>
-            "{review.text.length > 30 ? review.text.substring(0, 30) + '...' : review.text}"
+            &quot;{review.text.length > 30 ? review.text.substring(0, 30) + '...' : review.text}&quot;
           </p>
           <div className="font-medium text-gray-900 truncate" style={{ fontSize: '0.55rem' }}>
             {review.authorName}
@@ -471,7 +471,7 @@ export default TestimonialsWall;`
                       ))}
                     </div>
                     <p className="text-gray-700 italic truncate" style={{ fontSize: '0.6rem' }}>
-                      "{review.text.length > 25 ? review.text.substring(0, 25) + '...' : review.text}"
+                      &quot;{review.text.length > 25 ? review.text.substring(0, 25) + '...' : review.text}&quot;
                     </p>
                     <div className="text-gray-600 font-medium truncate" style={{ fontSize: '0.55rem' }}>
                       {review.authorName}
@@ -516,7 +516,7 @@ export default TestimonialsWall;`
                     WebkitLineClamp: 2,
                     WebkitBoxOrient: 'vertical',
                   }}>
-                    "{review.text.length > 20 ? review.text.substring(0, 20) + '...' : review.text}"
+                    &quot;{review.text.length > 20 ? review.text.substring(0, 20) + '...' : review.text}&quot;
                   </p>
                   <div className="text-gray-600 font-medium truncate" style={{ fontSize: '0.55rem' }}>
                     {review.authorName}
@@ -572,7 +572,7 @@ export default TestimonialsWall;`
                 <span key={i}>{i < review.rating ? '★' : '☆'}</span>
               ))}
             </div>
-            <p className="text-gray-700 text-sm italic mb-3">"{review.text}"</p>
+            <p className="text-gray-700 text-sm italic mb-3">&quot;{review.text}&quot;</p>
             <div className="text-sm font-medium text-gray-900">
               — {review.authorName}
             </div>

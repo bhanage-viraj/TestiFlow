@@ -321,7 +321,7 @@ export default function DashboardPage() {
                   No activity yet
                 </h3>
                 <p className="text-gray-600 mb-6">
-                  Once you start collecting testimonials, they'll appear here
+                  Once you start collecting testimonials, they&apos;ll appear here
                 </p>
                 <Button 
                   variant="outline"
@@ -352,7 +352,7 @@ export default function DashboardPage() {
                           <Heart className="w-3 h-3 text-red-500 fill-current" />
                         )}
                       </div>
-                      <p className="text-sm text-gray-600 line-clamp-2">"{review.text}"</p>
+                      <p className="text-sm text-gray-600 line-clamp-2">&quot;{review.text}&quot;</p>
                       <p className="text-xs text-gray-400 mt-1">
                         {new Date(review.createdAt).toLocaleDateString()}
                       </p>

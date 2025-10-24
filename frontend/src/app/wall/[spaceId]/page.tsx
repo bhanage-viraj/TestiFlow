@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { useParams } from 'next/navigation'
 import { apiClient, ApiError } from '@/lib/api'
 import { Star, Heart, Loader2 } from 'lucide-react'
@@ -28,11 +28,7 @@ export default function PublicWallOfLovePage() {
   const [reviews, setReviews] = useState<Review[]>([])
   const [loading, setLoading] = useState(true)
 
-  useEffect(() => {
-    loadData()
-  }, [spaceId])
-
-  const loadData = async () => {
+  const loadData = useCallback(async () => {
     try {
       setLoading(true)
       
@@ -55,7 +51,11 @@ export default function PublicWallOfLovePage() {
     } finally {
       setLoading(false)
     }
-  }
+  }, [spaceId])
+
+  useEffect(() => {
+    loadData()
+  }, [spaceId, loadData])
 
   if (loading) {
     return (
@@ -105,7 +105,7 @@ export default function PublicWallOfLovePage() {
               </div>
               
               <blockquote className="text-gray-700 text-lg leading-relaxed mb-4 italic">
-                "{review.text}"
+                &quot;{review.text}&quot;
               </blockquote>
               
               <div className="flex items-center justify-between">

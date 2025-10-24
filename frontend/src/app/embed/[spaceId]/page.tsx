@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { useParams } from 'next/navigation'
 import { apiClient, ApiError } from '@/lib/api'
 import { Star, Heart, Loader2, AlertCircle, MessageSquare } from 'lucide-react'
@@ -24,13 +24,7 @@ export default function EmbedPage() {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
 
-  useEffect(() => {
-    if (spaceId) {
-      loadReviews()
-    }
-  }, [spaceId])
-
-  const loadReviews = async () => {
+  const loadReviews = useCallback(async () => {
     try {
       setLoading(true)
       const reviewsData = await apiClient.getEmbedReviews(spaceId)
@@ -45,7 +39,13 @@ export default function EmbedPage() {
     } finally {
       setLoading(false)
     }
-  }
+  }, [spaceId])
+
+  useEffect(() => {
+    if (spaceId) {
+      loadReviews()
+    }
+  }, [spaceId, loadReviews])
 
   if (loading) {
     return (
@@ -105,7 +105,7 @@ export default function EmbedPage() {
             
             {/* Testimonial Text */}
             <blockquote className="text-gray-700 mb-4 leading-relaxed">
-              "{review.text}"
+              &quot;{review.text}&quot;
             </blockquote>
             
             {/* Author Info */}
