@@ -298,25 +298,7 @@ GET    /api/embed/{spaceId}/reviews    # Public embed endpoint
 - Set MongoDB connection string
 - Configure JWT secret
 
-### Docker
-```bash
-docker-compose up --build
-```
 
----
-
-##  License
-
-MIT License - see [LICENSE](LICENSE) file for details.
-
----
-
-## 📬 Contact
-
-- **GitHub**: [@your-username](https://github.com/your-username)  
-- **Email**: your.email@example.com
-
----
 
 <div align="center">
   <strong>Made with ❤️ for converting testimonials into customers</strong>
